@@ -14,11 +14,7 @@ main {
   margin-top: 50px;
   padding: 50px 0;
 }
-.home {
-  padding: 50px 0;
-  position: relative;
-  margin-top: 20px;
-}
+
 .navbar-brand {
   font-family: "KaushanScript-Regular";
   font-size: 2.5rem;
@@ -26,4 +22,17 @@ main {
 }
 .add_btn {
   text-align: right;
+}
+
+.details .content {
+  font-size: 18px;
+}
+.details-user-img {
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ddd;
+  padding: 5px;
+}
+.details .content p svg {
+  margin-right: 5px;
+  font-size: 16px;
 }

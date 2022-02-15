@@ -1,7 +1,8 @@
 import React from 'react'
 import { Container, Table, Button } from 'react-bootstrap'
-import { FaEye, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
-
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import EditIcon from '@mui/icons-material/Edit';
 export default function Home() {
     return (
         <div className='home'>
@@ -27,9 +28,9 @@ export default function Home() {
                             <td>software developer</td>
                             <td>1234567890</td>
                             <td className='d-flex justify-content-between'>
-                                <Button variant="success"><FaEye size={20} /></Button>
-                                <Button variant="primary"><FaRegEdit size={20} /></Button>
-                                <Button variant="warning"><FaRegTrashAlt size={20} /></Button>
+                                <Button variant="success"><VisibilityIcon size={20} /></Button>
+                                <Button variant="primary"><EditIcon size={20} /></Button>
+                                <Button variant="warning"><DeleteOutlineIcon size={20} /></Button>
                             </td>
                         </tr>
                     </tbody>
