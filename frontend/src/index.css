@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "KaushanScript-Regular";
+  src: url("./fonts/KaushanScript-Regular.ttf");
+}
+.home {
+  padding: 50px 0;
+  position: relative;
+  margin-top: 20px;
+}
+.navbar-brand {
+  font-family: "KaushanScript-Regular";
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+.add_btn {
+  text-align: right;
+}
