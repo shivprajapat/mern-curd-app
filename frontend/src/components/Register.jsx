@@ -45,6 +45,7 @@ export default function Register() {
             });
         }
         else {
+            setINP("");
             toast.success('User Added Successfully!', {
                 position: "top-right",
                 autoClose: 5000,
