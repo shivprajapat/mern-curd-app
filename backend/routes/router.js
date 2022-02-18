@@ -6,6 +6,10 @@ const users = require('../modules/userSchema') //import userSchema
 //     res.send('connect')
 // })
 
+
+/**
+* @register api
+**/
 router.post("/register", async (req, res) => {
 
     const { name, email, age, mobile, work, add, desc } = req.body;
@@ -32,4 +36,18 @@ router.post("/register", async (req, res) => {
     }
 })
 
+/**
+* @get api
+**/
+
+router.get('/getdata', async (req, res) => {
+    try {
+        const userdata = await users.find();
+        res.status(201).json(userdata);
+        console.log(userdata);
+    } catch (error) {
+        res.status(404).json(error);
+    }
+
+})
 module.exports = router;
