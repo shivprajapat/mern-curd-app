@@ -3,12 +3,13 @@ import { Container, Table, Button } from 'react-bootstrap'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
+import { Link } from 'react-router-dom';
 export default function Home() {
     return (
         <div className='home'>
             <Container>
                 <div className="add_btn mb-2">
-                    <button className='btn btn-primary'>Add Data</button>
+                    <Link to='/register' className='btn btn-primary'>Add Data</Link>
                 </div>
                 <Table striped bordered hover responsive>
                     <thead>

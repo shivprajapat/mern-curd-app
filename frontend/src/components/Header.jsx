@@ -8,7 +8,7 @@ export default function Header() {
                 <Navbar.Brand as={NavLink} to="/">CRUD APP</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ms-auto">
+                    <Nav className="m-auto">
                         <Nav.Link as={NavLink} to="/">Home</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

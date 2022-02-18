@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap'
+import { ToastContainer, toast } from 'react-toastify';
+
 export default function Register() {
 
     const [inputval, setINP] = useState({
@@ -13,9 +15,48 @@ export default function Register() {
             return {
                 ...prev, [name]: value
             }
-
         })
     }
+
+    const addData = async (e) => {
+        e.preventDefault();
+        const { name, email, age, mobile, work, add, desc } = inputval;
+        const res = await fetch("/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name, email, work, add, mobile, desc, age
+            })
+        });
+        const data = await res.json();
+        console.log(data);
+
+        if (res.status === 404 || !data) {
+            toast.error('User Error!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+        else {
+            toast.success('User Added Successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    }
+
     return (
         <section>
             <Container>
@@ -29,7 +70,6 @@ export default function Register() {
                                         <Form.Label>Name</Form.Label>
                                         <Form.Control type="text" name='name' value={inputval.name} onChange={setdata} />
                                     </Form.Group>
-
                                     <Form.Group as={Col}>
                                         <Form.Label>Email</Form.Label>
                                         <Form.Control type="email" name='email' value={inputval.email} onChange={setdata} />
@@ -51,7 +91,6 @@ export default function Register() {
                                         <Form.Label>Work</Form.Label>
                                         <Form.Control type="text" name='work' value={inputval.work} onChange={setdata} />
                                     </Form.Group>
-
                                     <Form.Group as={Col}>
                                         <Form.Label>Address</Form.Label>
                                         <Form.Control type="text" name='add' value={inputval.add} onChange={setdata} />
@@ -61,10 +100,11 @@ export default function Register() {
                                     <Form.Label>Description</Form.Label>
                                     <Form.Control as="textarea" rows={3} name='desc' value={inputval.desc} onChange={setdata} />
                                 </Form.Group>
-                                <Form.Group className="mb-3 text-center">
-                                    <Button variant="primary" type="submit">
+                                <Form.Group className="text-center">
+                                    <Button variant="primary" type="submit" onClick={addData}>
                                         Submit
                                     </Button>
+                                    <ToastContainer />
                                 </Form.Group>
                             </Form>
                         </Card>
