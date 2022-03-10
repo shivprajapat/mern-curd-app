@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Col, Container, Row, Button } from 'react-bootstrap'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -8,8 +8,35 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
+import { useParams } from 'react-router-dom';
+
 export default function Details() {
+    const { id } = useParams("");
+    const [showData, setShowData] = useState([]);
+    const handleChange = async (e) => {
+        const res = await fetch(`/getuser/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        const data = await res.json();
+        console.log(data);
+        if (res.status === 404 || !data) {
+            console.log('error');
+        }
+        else {
+            setShowData(data);
+            console.log('get data');
+        }
+    }
+    useEffect(() => {
+        handleChange()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
+
         <div className='details'>
             <Container>
                 <Row xs={1} md={2} className="g-4">
@@ -23,10 +50,10 @@ export default function Details() {
                                     <div className="left_view">
                                         <img className='details-user-img' src="https://statinfer.com/wp-content/uploads/dummy-user.png" style={{ width: 50 }} alt="" />
                                         <div className="content">
-                                            <h3><b>Name :</b> <span>shiv</span> </h3>
+                                            <h3><b>Name :</b> <span>{showData.name}</span> </h3>
                                             <h3><b>Age :</b> <span>21</span> </h3>
-                                            <p><EmailIcon /> <b>Email :</b> <span>shiv@gmail.com</span> </p>
-                                            <p><WorkIcon /><b>Occuption :</b> <span>web developer</span> </p>
+                                            <p><EmailIcon /> <b>Email :</b> <span>{showData.email}</span> </p>
+                                            <p><WorkIcon /><b>Occuption :</b> <span>{showData.work}</span> </p>
                                         </div>
                                     </div>
                                 </Col>
@@ -34,9 +61,9 @@ export default function Details() {
                                     <div className="right_view">
                                         <div className="content">
 
-                                            <p><PhoneIphoneIcon /> <b>Mobile :</b> <span>1234567890</span> </p>
+                                            <p><PhoneIphoneIcon /> <b>Mobile :</b> <span>{showData.mobile}</span> </p>
                                             <p><LocationOnIcon /><b>Location :</b> <span>Jaipur</span> </p>
-                                            <p  > <b>Description</b> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis laudantium.</p>
+                                            <p> <b>Description :</b>{showData.desc}</p>
                                         </div>
                                     </div>
                                 </Col>

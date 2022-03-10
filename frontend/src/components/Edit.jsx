@@ -2,17 +2,12 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap'
 export default function Edit() {
-    const [inputval, setINP] = useState({
-        name: "", email: "", age: "", mobile: "", work: "", add: "", desc: ""
-    })
+    const [inputval, setINP] = useState({ name: "", email: "", age: "", mobile: "", work: "", add: "", desc: "" })
     const setdata = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
         setINP((prev) => {
-            return {
-                ...prev, [name]: value
-            }
-
+            return { ...prev, [name]: value }
         })
     }
 
