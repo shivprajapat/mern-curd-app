@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap'
+import { useParams } from 'react-router-dom';
 export default function Edit() {
+
     const [inputval, setINP] = useState({ name: "", email: "", age: "", mobile: "", work: "", add: "", desc: "" })
+    const { id } = useParams("");
     const setdata = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
@@ -10,6 +13,28 @@ export default function Edit() {
             return { ...prev, [name]: value }
         })
     }
+    const handleChange = async (e) => {
+        const res = await fetch(`/getuser/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        const data = await res.json();
+        console.log(data);
+        if (res.status === 404 || !data) {
+            console.log('error');
+        }
+        else {
+            setINP(data);
+            console.log('get data');
+        }
+    }
+    useEffect(() => {
+        handleChange()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
 
     return (
         <section>

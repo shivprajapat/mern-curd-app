@@ -59,7 +59,8 @@ export default function Home() {
                                         <td>{mobile}</td>
                                         <td className='d-flex justify-content-between'>
                                             <Link to={`view/${items._id}`}><Button variant="success"><VisibilityIcon size={20} /></Button></Link>
-                                            <Button variant="primary"><EditIcon size={20} /></Button>
+                                            <Link to={`edit/${items._id}`}><Button variant="primary"><EditIcon size={20} /></Button></Link>
+
                                             <Button variant="warning"><DeleteOutlineIcon size={20} /></Button>
                                         </td>
                                     </tr>
