@@ -8,7 +8,7 @@ const users = require('../modules/userSchema') //import userSchema
 
 
 /**
-* @register api
+* @register post api
 **/
 router.post("/register", async (req, res) => {
 
@@ -61,6 +61,23 @@ router.get('/getuser/:id', async (req, res) => {
         const individual = await users.findById({ _id: id })
         console.log(individual);
         res.status(201).json(individual)
+    } catch (error) {
+        res.status(422).json(error);
+    }
+})
+
+/**
+* @update user data
+**/
+
+router.patch("/updateuser/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updateduser = await users.findByIdAndUpdate(id, req.body, {
+            new: true
+        })
+
+        res.status(201).json(updateduser);
     } catch (error) {
         res.status(422).json(error);
     }

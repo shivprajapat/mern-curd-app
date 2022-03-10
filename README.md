@@ -10,6 +10,10 @@
 - npm install dotenv
 - npm install cors
 - npm install nodemon ```{Development server}```
+## Backend API Request
+- GET  
+- POST  
+- PATCH  
 ## Database - MongoDB
 - npm install mongoose
 ### IDE used - visual Studio Code
