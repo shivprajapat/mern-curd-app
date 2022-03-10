@@ -51,7 +51,7 @@ export default function Details() {
                                         <img className='details-user-img' src="https://statinfer.com/wp-content/uploads/dummy-user.png" style={{ width: 50 }} alt="" />
                                         <div className="content">
                                             <h3><b>Name :</b> <span>{showData.name}</span> </h3>
-                                            <h3><b>Age :</b> <span>21</span> </h3>
+                                            <h3><b>Age :</b> <span>{showData.age}</span> </h3>
                                             <p><EmailIcon /> <b>Email :</b> <span>{showData.email}</span> </p>
                                             <p><WorkIcon /><b>Occuption :</b> <span>{showData.work}</span> </p>
                                         </div>
