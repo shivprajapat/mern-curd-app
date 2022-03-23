@@ -14,6 +14,7 @@
 - GET  
 - POST  
 - PATCH  
+- DELETE        
 ## Database - MongoDB
 - npm install mongoose
 ### IDE used - visual Studio Code
